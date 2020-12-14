@@ -1,0 +1,10 @@
+FROM node:alpine
+
+USER root
+WORKDIR /root
+
+RUN npm install -g ganache-cli
+COPY ganache.sh entrypoint.sh
+RUN chmod +x /root/entrypoint.sh
+
+ENTRYPOINT ["/root/entrypoint.sh"]
