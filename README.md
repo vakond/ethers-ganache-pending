@@ -12,4 +12,5 @@ Output:
 -------
     Pending the transaction...
     thread 'tokio-runtime-worker' panicked at 'WS Server panic: NoResponse'
-    or just hangs if use the Http-transport.
+
+or just hangs if use the Http-transport

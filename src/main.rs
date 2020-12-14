@@ -11,7 +11,7 @@ async fn main() -> anyhow::Result<()> {
         .parse::<LocalWallet>()?;
     let bank = SignerMiddleware::new(provider.clone(), wallet);
 
-    let accounts = bank.get_accounts().await?;
+    let accounts = provider.get_accounts().await?;
     dbg!(&accounts);
 
     let b0 = provider.get_balance(accounts[0], None).await?;
@@ -28,7 +28,7 @@ async fn main() -> anyhow::Result<()> {
     let tx_hash = bank.send_transaction(tx, None).await?;
     dbg!(tx_hash);
 
-    println!("Pending the transaction...");
+    println!("Pending transaction {}...", tx_hash);
     let receipt = bank.pending_transaction(tx_hash).await?;
     dbg!(&receipt);
 
